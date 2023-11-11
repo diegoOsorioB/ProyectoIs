@@ -17,6 +17,7 @@ import static com.sun.imageio.plugins.common.LZWStringTable.hash;
 
 import hash.Hash;
 import static java.util.Objects.hash;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,6 +64,13 @@ public class Login extends javax.swing.JFrame
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 txtUsuarioActionPerformed(evt);
+            }
+        });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtUsuarioKeyTyped(evt);
             }
         });
 
@@ -149,6 +157,7 @@ public class Login extends javax.swing.JFrame
                 menu mn = new menu();
                 this.dispose();
                 mn.setVisible(true);
+                JOptionPane.showMessageDialog(this, "Bienvenido: "+pwContra.getText());
             }else{
                 if (usr.getRol()==2) {
                 vtnRegistroU re=new vtnRegistroU();
@@ -157,11 +166,17 @@ public class Login extends javax.swing.JFrame
             }
             }
         } else {
-            System.out.println(usb.validaCredenciales(usr));
+             JOptionPane.showMessageDialog(this, "Uuario o contraseña no valido");
         }
-
+pwContra.setText("");
+txtUsuario.setText("");
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUsuarioKeyTyped
+    {//GEN-HEADEREND:event_txtUsuarioKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioKeyTyped
 
     /**
      * @param args the command line arguments
