@@ -11,6 +11,7 @@ import DTO.Usuarios;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,8 +20,10 @@ import javax.swing.JPanel;
  */
 public class vtnModificar extends javax.swing.JFrame
 {
-    UsuariosBLL ebo=new UsuariosBLL();
-    FondoPanel fondo=new FondoPanel();
+
+    UsuariosBLL ebo = new UsuariosBLL();
+    FondoPanel fondo = new FondoPanel();
+
     /**
      * Creates new form vtnRegistroU
      */
@@ -81,9 +84,35 @@ public class vtnModificar extends javax.swing.JFrame
 
         jLabel6.setText("Estatus");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtAP.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtAPKeyTyped(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
         jLabel7.setText("Rol");
 
         jLabel8.setText("Fecha Alta");
+
+        txtFecha.setEditable(false);
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -99,6 +128,14 @@ public class vtnModificar extends javax.swing.JFrame
         lisRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
         lisEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+
+        txtCodu.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtCoduKeyTyped(evt);
+            }
+        });
 
         jLabel9.setText("Codigo Usuario");
 
@@ -117,27 +154,24 @@ public class vtnModificar extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(56, 56, 56)
-                        .addComponent(psw)
-                        .addGap(79, 79, 79))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCodu, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAP, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE))
+                        .addComponent(psw))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCodu, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtAP, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -145,8 +179,8 @@ public class vtnModificar extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -220,73 +254,133 @@ public class vtnModificar extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-        Usuarios usu = new Usuarios();
-        usu.setRol(Integer.parseInt(lisRol.getSelectedItem().toString()));
-        usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
-        usu.setNombre(txtNombre.getText());
-        usu.setApellidoP(txtAP.getText());
-        usu.setTelefono(Integer.parseInt(txtTelefono.getText()));
-        usu.setNombreUsuario(txtUsuario.getText());
-         String newC="";
-         
-          EncriptacionMD5 mn=new EncriptacionMD5();
-       
-        
-        
-        char [] gen=psw.getPassword();
-        
-        for (int i = 0; i < gen.length; i++) {
-            newC+=gen[i];
-        }
-        String psww= mn.ecnode("root", newC);
-        usu.setContraseña(psww);
-       
-        if (lisEstatus.getSelectedItem().equals(1)) {
-            usu.setEstatus("ALTA");
+        if (txtNombre.getText().isEmpty() || txtAP.getText().isEmpty() | txtCodu.getText().isEmpty() | txtTelefono.getText().isEmpty() | txtUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor llene todos los campos");
         } else {
-            usu.setEstatus("BAJA");
-        }
-      int msj1= ebo.modificarUsuario(usu);
-           if (msj1==1) {
-            System.out.println("Se guardo con exito");
-        } else {
-            if (msj1==0) {
-                System.out.println("Ocurrio un error al insertar la base de datos");
+            //  if (rootPaneCheckingEnabled) {
+            Usuarios usu = new Usuarios();
+            usu.setRol(Integer.parseInt(lisRol.getSelectedItem().toString()));
+            usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
+            usu.setNombre(txtNombre.getText());
+            usu.setApellidoP(txtAP.getText());
+            
+            if (rootPaneCheckingEnabled) {
+                usu.setTelefono(Long.parseLong(txtTelefono.getText()));
             } else {
-                if (msj1==-1) {
-                    System.out.println("Error no esperado");
-                    
+                JOptionPane.showMessageDialog(this, "Numero no valido");
+            }
+            usu.setNombreUsuario(txtUsuario.getText());
+            String newC = "";
+
+            EncriptacionMD5 mn = new EncriptacionMD5();
+
+          
+                if (psw.getPassword().length >= 8) {
+                char[] gen = psw.getPassword();
+
+                for (int i = 0; i < gen.length; i++) {
+                    newC += gen[i];
+                }
+                String psww = mn.ecnode("root", newC);
+                usu.setContraseña(psww);
+            } else {
+                JOptionPane.showMessageDialog(this, "La longitud maxima de la contraseña debe ser de 8");
+            }
+            
+
+            if (lisEstatus.getSelectedItem().equals(1)) {
+                usu.setEstatus("ALTA");
+            } else {
+                usu.setEstatus("BAJA");
+            }
+            int msj1 = ebo.modificarUsuario(usu);
+            if (msj1 == 1) {
+                System.out.println("Se guardo con exito");
+            } else {
+                if (msj1 == 0) {
+                    System.out.println("Ocurrio un error al insertar la base de datos");
                 } else {
-                    if (msj1==-2) {
-                        System.out.println("Verifique el usuario o contraseña que ya existe");
+                    if (msj1 == -1) {
+                        System.out.println("Error no esperado");
+
                     } else {
-                        if (msj1==-4) {
-                            System.out.println("No se conecto a la base de datos");
+                        if (msj1 == -2) {
+                            System.out.println("Verifique el usuario o contraseña que ya existe");
                         } else {
+                            if (msj1 == -4) {
+                                System.out.println("No se conecto a la base de datos");
+                            } else {
+                            }
                         }
                     }
                 }
             }
+            //  }
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
     {//GEN-HEADEREND:event_jButton3ActionPerformed
-       Usuarios usu = new Usuarios();
-       UsuariosBLL usb=new UsuariosBLL();
-        usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
-       usb.verificaM(usu);
-       
-       txtNombre.setText(usu.getNombre());
-       txtAP.setText(usu.getApellidoP());
-       txtTelefono.setText(""+usu.getTelefono());
-       txtUsuario.setText(usu.getNombreUsuario());
-       txtFecha.setText(""+usu.getFechaAlta());
-       
-       lisEstatus.setToolTipText("Hola");
-       lisRol.setToolTipText(""+usu.getRol());
-       
+        if (txtCodu.getText().isEmpty()) {
+            System.out.println("Codigo");
+        } else {
+            Usuarios usu = new Usuarios();
+            UsuariosBLL usb = new UsuariosBLL();
+            usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
+            usb.verificaM(usu);
+
+            txtNombre.setText(usu.getNombre());
+            txtAP.setText(usu.getApellidoP());
+            txtTelefono.setText("" + usu.getTelefono());
+            txtUsuario.setText(usu.getNombreUsuario());
+            txtFecha.setText("" + usu.getFechaAlta());
+            EncriptacionMD5 mn1 = new EncriptacionMD5();
+            String psww= mn1.deecnode("root",usu.getContraseña() );
+            psw.setText(psww);
+
+            lisEstatus.setToolTipText("Hola");
+            lisRol.setToolTipText("" + usu.getRol());
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtCoduKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtCoduKeyTyped
+    {//GEN-HEADEREND:event_txtCoduKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+            //JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
+        }
+    }//GEN-LAST:event_txtCoduKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtTelefonoKeyTyped
+    {//GEN-HEADEREND:event_txtTelefonoKeyTyped
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+            // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyTyped
+    {//GEN-HEADEREND:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+            // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtAPKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtAPKeyTyped
+    {//GEN-HEADEREND:event_txtAPKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+            // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtAPKeyTyped
 
     /**
      * @param args the command line arguments
@@ -352,16 +446,19 @@ public class vtnModificar extends javax.swing.JFrame
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-class FondoPanel extends JPanel
-   {
-       private Image imagen;
-       public void paint(Graphics g){
-           imagen=new ImageIcon(getClass().getResource("/imagenes/Fondo.jpg")).getImage();
-           g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-           setOpaque(false);
-           super.paint(g);
-       }
-       
-   }
+    class FondoPanel extends JPanel
+    {
+
+        private Image imagen;
+
+        public void paint(Graphics g)
+        {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/Fondo.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+
+    }
 
 }

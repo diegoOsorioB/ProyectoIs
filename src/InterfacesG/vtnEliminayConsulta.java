@@ -162,6 +162,7 @@ public class vtnEliminayConsulta extends javax.swing.JFrame
        int fila=tbLis.getSelectedRow();
        int ident= Integer.parseInt(tbLis.getValueAt(fila, 0).toString());
        ub.eliminar(ident);
+       tabla();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
