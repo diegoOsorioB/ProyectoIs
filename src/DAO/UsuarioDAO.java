@@ -68,7 +68,7 @@ public class UsuarioDAO
     {
 
         PreparedStatement pst = null;
-        String sql = "UPDATE SEGURIDAD.USUARIOS SET ID_ROL=?,CODIGOUSUARIO=?,NOMBRE=?,APELLIDOPAT=?,TELEFONO=?,NOMBRE_USUARIO=?,CONTRASENIA=?,ESTATUS=?,FECHA_ALTA=SYSDATE "
+        String sql = "UPDATE SEGURIDAD.USUARIOS SET ID_ROL=?,CodigoUsuario=?,NOMBRE=?,APELLIDOP=?,TELEFONO=?,NombreUsuario=?,Contrasena=?,ESTATUS=?,FechaAlta=SYSDATE "
                 + "WHERE CODIGOUSUARIO = "+usu.getCodigoUsuario()+"";
 
         try {
@@ -185,7 +185,7 @@ return 1;
     {
 
         PreparedStatement pst = null;
-        String sql = "DELETE FROM SEGURIDAD.USUARIOS WHERE ID=?";
+        String sql = "DELETE FROM SEGURIDAD.USUARIOS WHERE ID_Usuario=?";
 
         try {
             pst = con.prepareStatement(sql);
@@ -226,7 +226,6 @@ return 1;
             if (rs.next()) {
                 String psww= mn1.deecnode("root", rs.getString(3));
                 if (usu.getContraseña().equals(psww)) {
-                    System.out.println("Hola, si");
                     usu.setRol(rs.getInt(1));
                     return true;
                 }

@@ -54,8 +54,6 @@ public class vtnRegistroU extends javax.swing.JFrame
         txtTelefono = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtFecha = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         lisRol = new javax.swing.JComboBox<>();
@@ -82,9 +80,31 @@ public class vtnRegistroU extends javax.swing.JFrame
 
         jLabel6.setText("Estatus");
 
-        jLabel7.setText("Rol");
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
-        jLabel8.setText("Fecha Alta");
+        txtAP.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtAPKeyTyped(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setText("Rol");
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener()
@@ -107,6 +127,14 @@ public class vtnRegistroU extends javax.swing.JFrame
         lisRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
         lisEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+
+        txtCodu.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyTyped(java.awt.event.KeyEvent evt)
+            {
+                txtCoduKeyTyped(evt);
+            }
+        });
 
         jLabel9.setText("Codigo Usuario");
 
@@ -145,13 +173,11 @@ public class vtnRegistroU extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCodu)
-                            .addComponent(txtFecha)
                             .addComponent(lisRol, 0, 139, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -165,31 +191,25 @@ public class vtnRegistroU extends javax.swing.JFrame
                 .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel1)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(lisRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(txtAP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(lisRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(txtCodu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -218,24 +238,42 @@ public class vtnRegistroU extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
+       if (txtNombre.getText().isEmpty() || txtAP.getText().isEmpty() | txtCodu.getText().isEmpty() | txtTelefono.getText().isEmpty() | txtUsuario.getText().isEmpty() | txtCodu.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(this, "Por favor llene todos los campos");
+        }
+        else{
         Usuarios usu = new Usuarios();
         String newC="";
         String secretKey = "root";
-        char [] gen=psw.getPassword();
+           if (psw.getPassword().length>=8) {
+               char [] gen=psw.getPassword();
         
         for (int i = 0; i < gen.length; i++) {
             newC+=gen[i];
         }
         EncriptacionMD5 mn=new EncriptacionMD5();
        String psww= mn.ecnode(secretKey, newC);
+       usu.setContraseña(psww);
+           }else{
+               JOptionPane.showMessageDialog(this, "La longitud maxima de la contraseña debe ser de 8");
+           }
         
         usu.setRol(Integer.parseInt(lisRol.getSelectedItem().toString()));
         usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
         usu.setNombre(txtNombre.getText());
         usu.setApellidoP(txtAP.getText());
-        usu.setTelefono(Integer.parseInt(txtTelefono.getText()));
-        usu.setNombreUsuario(txtUsuario.getText());
-        usu.setContraseña(psww);
+           if (txtTelefono.getText().length()==10) {
+               usu.setTelefono(Integer.parseInt(txtTelefono.getText()));
+           }else{
+           JOptionPane.showMessageDialog(this, "Numero incorrecto");
+        }
+        
+           if (txtUsuario.getText().length()<10) {
+               usu.setNombreUsuario(txtUsuario.getText());
+           }else{
+               JOptionPane.showMessageDialog(this, "Codigo no valido");
+           }
+        
         if (lisEstatus.getSelectedItem().equals(1)) {
             usu.setEstatus("ALTA");
         } else {
@@ -265,6 +303,7 @@ public class vtnRegistroU extends javax.swing.JFrame
                 }
             }
         }
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
@@ -272,6 +311,44 @@ public class vtnRegistroU extends javax.swing.JFrame
        vtnRegistroU vtnr=new vtnRegistroU();
        vtnr.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyTyped
+    {//GEN-HEADEREND:event_txtNombreKeyTyped
+       char c= evt.getKeyChar();
+        if ((c<'a' || c>'z') && (c<'A' || c>'Z') ) {
+            evt.consume();
+           // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtAPKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtAPKeyTyped
+    {//GEN-HEADEREND:event_txtAPKeyTyped
+char c= evt.getKeyChar();
+        if ((c<'a' || c>'z') && (c<'A' || c>'Z') ) {
+            evt.consume();
+           // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+        }        
+    }//GEN-LAST:event_txtAPKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtTelefonoKeyTyped
+    {//GEN-HEADEREND:event_txtTelefonoKeyTyped
+char c= evt.getKeyChar();
+   
+        if (c<'0' || c>'9') {
+            evt.consume();
+           // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
+        }      
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtCoduKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtCoduKeyTyped
+    {//GEN-HEADEREND:event_txtCoduKeyTyped
+char c= evt.getKeyChar();
+   
+        if (c<'0' || c>'9') {
+            evt.consume();
+           // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
+        }
+    }//GEN-LAST:event_txtCoduKeyTyped
 
     /**
      * @param args the command line arguments
@@ -322,14 +399,12 @@ public class vtnRegistroU extends javax.swing.JFrame
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox<String> lisEstatus;
     private javax.swing.JComboBox<String> lisRol;
     private javax.swing.JPasswordField psw;
     private javax.swing.JTextField txtAP;
     private javax.swing.JTextField txtCodu;
-    private javax.swing.JFormattedTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
