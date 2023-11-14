@@ -14,15 +14,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 /**
  *
  * @author diego
  */
 public class vtnRegistroU extends javax.swing.JFrame
 {
-    UsuariosBLL ebo=new UsuariosBLL();
-    FondoPanel fondo=new FondoPanel();
+
+    UsuariosBLL ebo = new UsuariosBLL();
+    FondoPanel fondo = new FondoPanel();
+
     /**
      * Creates new form vtnRegistroU
      */
@@ -238,115 +239,114 @@ public class vtnRegistroU extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
-       if (txtNombre.getText().isEmpty() || txtAP.getText().isEmpty() | txtCodu.getText().isEmpty() | txtTelefono.getText().isEmpty() | txtUsuario.getText().isEmpty() | txtCodu.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(this, "Por favor llene todos los campos");
-        }
-        else{
-        Usuarios usu = new Usuarios();
-        String newC="";
-        String secretKey = "root";
-           if (psw.getPassword().length>=8) {
-               char [] gen=psw.getPassword();
-        
-        for (int i = 0; i < gen.length; i++) {
-            newC+=gen[i];
-        }
-        EncriptacionMD5 mn=new EncriptacionMD5();
-       String psww= mn.ecnode(secretKey, newC);
-       usu.setContraseña(psww);
-           }else{
-               JOptionPane.showMessageDialog(this, "La longitud maxima de la contraseña debe ser de 8");
-           }
-        
-        usu.setRol(Integer.parseInt(lisRol.getSelectedItem().toString()));
-        usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
-        usu.setNombre(txtNombre.getText());
-        usu.setApellidoP(txtAP.getText());
-           if (txtTelefono.getText().length()==10) {
-               usu.setTelefono(Integer.parseInt(txtTelefono.getText()));
-           }else{
-           JOptionPane.showMessageDialog(this, "Numero incorrecto");
-        }
-        
-           if (txtUsuario.getText().length()<10) {
-               usu.setNombreUsuario(txtUsuario.getText());
-           }else{
-               JOptionPane.showMessageDialog(this, "Codigo no valido");
-           }
-        
-        if (lisEstatus.getSelectedItem().equals(1)) {
-            usu.setEstatus("ALTA");
+        if (txtNombre.getText().isEmpty() || txtAP.getText().isEmpty() | txtCodu.getText().isEmpty() | txtTelefono.getText().isEmpty() | txtUsuario.getText().isEmpty() | txtCodu.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor llene todos los campos");
         } else {
-            usu.setEstatus("BAJA");
-        }
-        
-      int msj1= ebo.salvarUsuario(usu);
-           if (msj1==1) {
-            System.out.println("Se guardo con exito");
-//               JOptionPane.showMessageDialog(this, psw.getSelectedText().toString());
-        } else {
-            if (msj1==0) {
-                System.out.println("Ocurrio un error al insertar la base de datos");
+            Usuarios usu = new Usuarios();
+            String newC = "";
+            String secretKey = "root";
+            if (psw.getPassword().length >= 8) {
+                char[] gen = psw.getPassword();
+
+                for (int i = 0; i < gen.length; i++) {
+                    newC += gen[i];
+                }
+                EncriptacionMD5 mn = new EncriptacionMD5();
+                String psww = mn.ecnode(secretKey, newC);
+                usu.setContraseña(psww);
             } else {
-                if (msj1==-1) {
-                    System.out.println("Error no esperado");
-                    
-                } else {
-                    if (msj1==-2) {
-                        System.out.println("Verifique el usuario o contraseña que ya existe");
+                JOptionPane.showMessageDialog(this, "La longitud maxima de la contraseña debe ser de 8");
+            }
+
+            if (txtTelefono.getText().length() == 10) {
+
+                usu.setTelefono(Long.parseLong(txtTelefono.getText()));
+                if (txtUsuario.getText().length() < 10) {
+                    usu.setNombreUsuario(txtUsuario.getText());
+
+                    if (lisEstatus.getSelectedItem().equals(1)) {
+                        usu.setEstatus("ALTA");
                     } else {
-                        if (msj1==-4) {
-                            System.out.println("No se conecto a la base de datos");
+                        usu.setEstatus("BAJA");
+                    }
+                    usu.setRol(Integer.parseInt(lisRol.getSelectedItem().toString()));
+                    usu.setCodigoUsuario(Integer.parseInt(txtCodu.getText()));
+                    usu.setNombre(txtNombre.getText());
+                    usu.setApellidoP(txtAP.getText());
+                    int msj1 = ebo.salvarUsuario(usu);
+                    if (msj1 == 1) {
+                        System.out.println("Se guardo con exito");
+//               JOptionPane.showMessageDialog(this, psw.getSelectedText().toString());
+                    } else {
+                        if (msj1 == 0) {
+                            System.out.println("Ocurrio un error al insertar la base de datos");
                         } else {
+                            if (msj1 == -1) {
+                                System.out.println("Error no esperado");
+
+                            } else {
+                                if (msj1 == -2) {
+                                    System.out.println("Verifique el usuario o contraseña que ya existe");
+                                } else {
+                                    if (msj1 == -4) {
+                                        System.out.println("No se conecto a la base de datos");
+                                    } else {
+                                    }
+                                }
+                            }
                         }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Codigo no valido");
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Numero incorrecto");
             }
+
         }
-       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
     {//GEN-HEADEREND:event_jButton2ActionPerformed
-       vtnRegistroU vtnr=new vtnRegistroU();
-       vtnr.setVisible(false);
+        vtnRegistroU vtnr = new vtnRegistroU();
+        vtnr.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyTyped
     {//GEN-HEADEREND:event_txtNombreKeyTyped
-       char c= evt.getKeyChar();
-        if ((c<'a' || c>'z') && (c<'A' || c>'Z') ) {
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
             evt.consume();
-           // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+            // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
         }
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtAPKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtAPKeyTyped
     {//GEN-HEADEREND:event_txtAPKeyTyped
-char c= evt.getKeyChar();
-        if ((c<'a' || c>'z') && (c<'A' || c>'Z') ) {
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
             evt.consume();
-           // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
-        }        
+            // JOptionPane.showMessageDialog(this, "Ingrese solo letras");
+        }
     }//GEN-LAST:event_txtAPKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtTelefonoKeyTyped
     {//GEN-HEADEREND:event_txtTelefonoKeyTyped
-char c= evt.getKeyChar();
-   
-        if (c<'0' || c>'9') {
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
             evt.consume();
-           // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
-        }      
+            // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
+        }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtCoduKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtCoduKeyTyped
     {//GEN-HEADEREND:event_txtCoduKeyTyped
-char c= evt.getKeyChar();
-   
-        if (c<'0' || c>'9') {
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
             evt.consume();
-           // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
+            // JOptionPane.showMessageDialog(this, "Ingrese un valor numerico");
         }
     }//GEN-LAST:event_txtCoduKeyTyped
 
@@ -410,16 +410,19 @@ char c= evt.getKeyChar();
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-class FondoPanel extends JPanel
-   {
-       private Image imagen;
-       public void paint(Graphics g){
-           imagen=new ImageIcon(getClass().getResource("/imagenes/Fondo.jpg")).getImage();
-           g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-           setOpaque(false);
-           super.paint(g);
-       }
-       
-   }
+    class FondoPanel extends JPanel
+    {
+
+        private Image imagen;
+
+        public void paint(Graphics g)
+        {
+            imagen = new ImageIcon(getClass().getResource("/imagenes/Fondo.jpg")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+
+    }
 
 }

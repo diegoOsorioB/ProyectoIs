@@ -55,7 +55,7 @@ public class UsuarioDAO
         }
         catch(SQLException ex){
             msj =0;//OCURRIO UN ERROR AL INSERTAR DATOS
-            System.out.println(ex);
+            System.out.println(ex+"2");
         }catch(Exception exc){
             msj=-1;//ERROR NO ESPERADO
             System.out.println(exc);
@@ -113,12 +113,12 @@ public class UsuarioDAO
             while(rs.next()){
                 
                 model.addRow(new Object[]{rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),
-                rs.getInt(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)});
+                rs.getLong(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)});
                 
             }
             tbl.setModel(model);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e+"87454");
         }
     }
     public void verifica(Connection con,JTable tbl,String nom)
@@ -206,39 +206,23 @@ return 1;
 
         PreparedStatement pst = null;
         ResultSet rs= null;
-        String sql = "SELECT ID_ROL,NombreUsuario,Contrasena FROM SEGURIDAD.USUARIOS WHERE NombreUsuario=?";
+        String sql = "SELECT ID_ROL,NombreUsuario,Contrasena FROM SEGURIDAD.USUARIOS WHERE NombreUsuario=? AND Contrasena=?";
 
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1,usu.getNombreUsuario());
+            pst.setString(2,usu.getContraseña());
             rs=pst.executeQuery();
-            String conu,consq;
-            String newC="";
-        
-//        char [] gen=rs.getString(3);
-//        
-//        for (int i = 0; i < gen.length; i++) {
-//            newC+=gen[i];
-//        }
-            EncriptacionMD5 mn1=new EncriptacionMD5();
        
         
             if (rs.next()) {
-                String psww= mn1.deecnode("root", rs.getString(3));
-                if (usu.getContraseña().equals(psww)) {
+                
                     usu.setRol(rs.getInt(1));
-                    return true;
-                }
-                else{
-                     System.out.println(usu.getContraseña());
-            System.out.println(psww);
-                      System.out.println("Noooo");
-                    return false;
-                  
-                }
+                   // usu.setContraseña(rs.getString(2));
+                    System.out.println(rs.getString(2));
+
             }
-           
-           return false;
+            return true;
         } catch (SQLException e) {
             System.out.println(e);
             return false;
